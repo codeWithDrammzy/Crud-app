@@ -1,0 +1,48 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+<body class="bg-gray-50">
+    {% include 'pages/navbar.html' %}
+    
+    <div class="shadow-sm text-center ">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-extrabold text-gray-900">Welcome, {{ user }}</h1>
+            <br>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse shadow-lg rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-gray-700 text-white text-lg tracking-wide">
+                            <th class="border p-4">ID</th>
+                            <th class="border p-4">First Name</th>
+                            <th class="border p-4">Last Name</th>
+                            <th class="border p-4">Email</th>
+                            <th class="border p-4">Phone</th>
+                            <th class="border p-4">Date Joined</th>
+                            <th class="border p-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white text-gray-800">
+                        {% for record in records %}
+                        <tr class="border-b hover:bg-gray-100 transition">
+                            <td class="border p-4 text-center">{{ record.id }}</td>
+                            <td class="border p-4 text-center">{{ record.first_name|upper }}</td>
+                            <td class="border p-4 text-center">{{ record.last_name|upper }}</td>
+                            <td class="border p-4 text-center">{{ record.email }}</td>
+                            <td class="border p-4 text-center">{{ record.phone_number }}</td>
+                            <td class="border p-4 text-center">{{ record.creation_date }}</td>
+                            <td class="border p-4 text-center">
+                                <a href="{% url 'record' record.id %}" 
+                                   class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

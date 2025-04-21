@@ -1,0 +1,29 @@
+{% extends 'pages/base.html' %}
+<!-- {% load crispy_forms_tags %} -->
+{% load tailwind_filters %}
+
+{% block content %}
+<body>
+    {% include 'pages/navbar.html' %}
+    
+    <div class="max-w-md mx-auto bg-gray-100 shadow-md p-5 rounded-md">
+        <h3 class="text-xl font-bold text-center mb-2">Login to your Account</h3>
+        
+    
+        <form action="" method="POST" autocomplete="off" class="space-y-4">
+            {% csrf_token %}
+
+            {{ form|crispy }}  <!-- ✅ This will apply Tailwind styling automatically -->
+
+            <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-700 rounded-md p-2">
+                Login Here
+            </button>
+        </form>
+
+        <br>
+        <div class="text-center text-sm">
+            <p>Don't  have an account? <a href="{% url 'create-account' %}" class="text-blue-600 hover:underline">Register</p>
+        </div>
+    </div>
+</body>
+{% endblock %}

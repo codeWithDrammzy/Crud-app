@@ -1,0 +1,24 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% include 'pages/navbar.html'%}
+
+<div class="shadow-sm text-center py-6 mt-10">
+    <div class="container mx-auto px-6">
+        <h1 class="text-3xl font-bold text-gray-900">Contact Manager: First Project</h1>
+        <br>
+        <br>
+        <h4>Keep track of your contacts</h4>
+    </div>
+</div>
+<hr>
+<br>
+
+<!-- Center the button and style it as a button -->
+<div class="flex justify-center">
+    <a href="{% url 'create-account'%}" class="btn btn-primary px-6 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded-md">Create Account</a>
+</div>
+&nbsp;
+<h3 class="text-center">Hello from the home view</h3>
+
+{% endblock %}

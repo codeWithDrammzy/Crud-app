@@ -1,0 +1,42 @@
+<nav class="bg-blue-600 text-white p-4 flex justify-between items-center w-full shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Dynamic link based on authentication -->
+        <a class="text-2xl font-extrabold tracking-wide" 
+           href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'home' %}{% endif %}">
+            Dev MindSet
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="lg:hidden text-white focus:outline-none">
+            <i class="fa fa-bars text-2xl"></i>
+        </button>
+
+        <!-- Menu Items -->
+        <div id="menu" class="hidden lg:flex lg:items-center space-x-6">
+            {% if user.is_authenticated %}
+                <a class="hover:text-gray-300 flex items-center" href="{% url 'create-contact' %}">
+                    Create Contact <i class="fa fa-user-plus ml-2"></i>
+                </a>
+                <a class="hover:text-gray-300 flex items-center" href="{% url 'logout-user' %}">
+                    Sign out <i class="fa fa-sign-out ml-2"></i>
+                </a>
+            {% else %}
+                <a class="hover:text-gray-300 flex items-center" href="{% url 'create-account' %}">
+                    Register <i class="fa fa-user ml-2"></i>
+                </a>
+                <a class="hover:text-gray-300 flex items-center" href="{% url 'my-login' %}">
+                    Login <i class="fa fa-sign-in ml-2"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<!-- Add margin so content does not get covered -->
+<div class="mt-10"></div>
+
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+        document.getElementById('menu').classList.toggle('hidden');
+    });
+</script>

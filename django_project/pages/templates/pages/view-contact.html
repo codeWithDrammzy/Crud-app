@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+
+{% include 'pages/navbar.html' %}
+
+<div class="flex justify-center items-start bg-gray-50 px-4 py-6">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-2xl ">
+        <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-4 uppercase tracking-wide">
+            {{ record.last_name }} {{ record.first_name }}
+        </h2>
+
+        <div class="border-b-2 border-gray-300 mb-3"></div>
+
+        <div class="space-y-3 text-lg">
+            <p class="text-gray-700"><strong class="text-gray-900">ID:</strong> {{ record.id }}</p>
+            <p class="text-gray-700"><strong class="text-gray-900">First Name:</strong> {{ record.first_name|upper }}</p>
+            <p class="text-gray-700"><strong class="text-gray-900">Last Name:</strong> {{ record.last_name|upper }}</p>
+            <p class="text-gray-700"><strong class="text-gray-900">Email:</strong> {{ record.email }}</p>
+            <p class="text-gray-700"><strong class="text-gray-900">Phone Number:</strong> {{ record.phone_number }}</p>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+            <a href="{% url 'dashboard' %}" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition duration-300 text-lg shadow-md">
+                ⬅ Back
+            </a>
+            <a href="{% url 'update-contact' record.id %}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300 text-lg shadow-md">
+                ✏ Edit
+            </a>
+
+            <a href="{% url 'delete-contact' record.id %}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300 text-lg shadow-md">
+             Delete
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
